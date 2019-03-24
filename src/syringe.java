@@ -48,7 +48,6 @@ public class syringe {
             for (int i = 0; i < n * 2; i++) {
                 charStart = aniStart = picStart = -1;
 
-                // replacing unreadable chars
                 webpage = getHTML("https://myanimelist.net/character.php?limit=" + 50 * i);
 
                 aniStart = webpage.indexOf("<td class=\"animeography\">", aniStart + 1);
@@ -73,7 +72,7 @@ public class syringe {
                     picEnd = webpage.indexOf(".", picStart + 1);
                     picLink = webpage.substring(picStart, picEnd);
 
-                    // adding all information to arraylist
+                    // adding all information to string and replacing unreadable symbols
                     character = (charName + " (" + aniName + ") http://cdn.myanimelist.net/" + picLink + ".jpg")
                             .replaceAll("&#039;", "'")
                             .replaceAll("&quot;", "\"")
