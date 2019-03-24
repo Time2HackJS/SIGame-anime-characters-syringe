@@ -79,7 +79,7 @@ public class syringe {
                             .replaceAll("&quot;", "\"")
                             .replaceAll("&amp;", "&");
 
-                    // adding character to arraylist and printig it if not repeat
+                    // adding character to arraylist and printing it if not repeat
                     if (!characters.contains(character)) {
                         characters.add(character);
                         System.out.println(character);
