@@ -78,7 +78,8 @@ public class syringe {
                             .replaceAll("&#039;", "'")
                             .replaceAll("&quot;", "\"")
                             .replaceAll("&amp;", "&");
-                    characters.add(character);
+
+                    if (!characters.contains(character)) characters.add(character);
 
                     // printing last character information
                     System.out.println(character);
@@ -233,7 +234,7 @@ public class syringe {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\content.xml"));
+            StreamResult result = new StreamResult(new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\test\\content.xml"));
 
             transformer.transform(source, result);
 
@@ -339,12 +340,12 @@ public class syringe {
             characterBuffer = createXML(characterBuffer, i+1);
 
             // copying file sample.siq as Syringe.siq
-            File source = new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\sample.siq");
-            File dest = new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\Anime characters syringe #" + (i+1) + ".siq");
+            File source = new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\test\\sample.siq");
+            File dest = new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\test\\Anime characters syringe #" + (i+1) + ".siq");
             Files.copy(source.toPath(), dest.toPath());
 
             // putting content.xml to Syringe.siq
-            File[] files = {new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\content.xml")};
+            File[] files = {new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\test\\content.xml")};
             addFilesToExistingZip(dest, files);
             System.out.println("\"Anime characters syringe #" + (i+1) + "\" is successfully done!\n");
         }
