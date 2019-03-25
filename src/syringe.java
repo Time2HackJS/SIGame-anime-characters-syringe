@@ -68,7 +68,7 @@ public class syringe {
                     // extracting profile picture link
                     picStart = webpage.indexOf("src=\"https://cdn.myanimelist.net/r/50x78/images/",
                             picStart + 1) + 41;
-                    if (webpage.charAt(picStart) == 'q') continue;
+                    if (webpage.charAt(picStart + 7) == 'q') continue;
                     picEnd = webpage.indexOf(".", picStart + 1);
                     picLink = webpage.substring(picStart, picEnd);
 
@@ -82,7 +82,7 @@ public class syringe {
                     if (!characters.contains(character)) {
                         characters.add(character);
                         System.out.println(character);
-                    }            
+                    }
                 }
             }
         } catch (Exception e) {
@@ -234,7 +234,7 @@ public class syringe {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\test\\content.xml"));
+            StreamResult result = new StreamResult(new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\content.xml"));
 
             transformer.transform(source, result);
 
@@ -340,12 +340,12 @@ public class syringe {
             characterBuffer = createXML(characterBuffer, i+1);
 
             // copying file sample.siq as Syringe.siq
-            File source = new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\test\\sample.siq");
-            File dest = new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\test\\Anime characters syringe #" + (i+1) + ".siq");
+            File source = new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\sample.siq");
+            File dest = new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\Anime characters syringe #" + (i+1) + ".siq");
             Files.copy(source.toPath(), dest.toPath());
 
             // putting content.xml to Syringe.siq
-            File[] files = {new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\test\\content.xml")};
+            File[] files = {new File("C:\\Users\\Time2Hack\\Desktop\\Syringe\\content.xml")};
             addFilesToExistingZip(dest, files);
             System.out.println("\"Anime characters syringe #" + (i+1) + "\" is successfully done!\n");
         }
