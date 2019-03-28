@@ -63,12 +63,11 @@ public class syringe {
                     aniEnd = webpage.indexOf("</a>", aniStart + 1);
                     aniName = webpage.substring(aniStart, aniEnd);
                     aniName = aniName.substring(aniName.lastIndexOf("\">")+2);
-                    if (aniName.length() > 200) continue;
 
                     // extracting profile picture link
                     picStart = webpage.indexOf("src=\"https://cdn.myanimelist.net/r/50x78/images/",
                             picStart + 1) + 41;
-                    if (webpage.charAt(picStart + 7) == 'q') continue;
+                    if (webpage.charAt(picStart + 7) == 'q' || aniName.length() > 200) continue;
                     picEnd = webpage.indexOf(".", picStart + 1);
                     picLink = webpage.substring(picStart, picEnd);
 
